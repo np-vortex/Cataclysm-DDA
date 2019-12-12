@@ -1884,6 +1884,7 @@
       "bio_torsionratchet",
       "bio_taste_blocker"
     ],
+    "forbidden_traits": [ "MYOPIC", "HYPEROPIC" ],
     "skills": [
       { "level": 5, "name": "gun" },
       { "level": 4, "name": "rifle" },

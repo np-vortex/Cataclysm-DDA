@@ -220,6 +220,7 @@ void profession::load( JsonObject &jo, const std::string & )
     optional( jo, was_loaded, "CBMs", _starting_CBMs, auto_flags_reader<bionic_id> {} );
     // TODO: use string_id<mutation_branch> or so
     optional( jo, was_loaded, "traits", _starting_traits, auto_flags_reader<trait_id> {} );
+    optional( jo, was_loaded, "forbidden_traits", _forbidden_traits, auto_flags_reader<trait_id> {} );
     optional( jo, was_loaded, "flags", flags, auto_flags_reader<> {} );
 }
 
@@ -451,6 +452,12 @@ bool profession::is_locked_trait( const trait_id &trait ) const
 {
     return std::find( _starting_traits.begin(), _starting_traits.end(), trait ) !=
            _starting_traits.end();
+}
+
+bool profession::is_forbidden_trait( const trait_id &trait ) const
+{
+    return std::find( _forbidden_traits.begin(), _forbidden_traits.end(), trait ) !=
+          _forbidden_traits.end();
 }
 
 std::map<spell_id, int> profession::spells() const
